@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: "Figtree", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+        }
+    </style>
+</head>
+</head>
+
+<body class="">
+    <header>
+        <nav class="flex justify-between items-center bg-black ">
+            <div class="bg-blue-600 p-2 ">
+                <div class="bg-blue-600 text-white p-2">
+                    <h1 class="font-serif text-xl">Job Portal</h1>
+                </div>
+            </div>
+            <div class="bg-white w-100 rounded-xl flex items-center space-x-5  ">
+                <input type="text" id="searchBar" class="bg-white rounded w-[85%] p-2 outline-none "
+                    placeholder="Search...">
+                <p id="searchBtn" class=" bg-gray-300 text-blue-500 rounded-r-sm p-2 hover:bg-blue-500 hover:text-white ">Search</p>
+            </div>
+            <div>
+                <ul
+                    class="flex justify-around space-x-10 items-center bg-blue-500 rounded-lg font-serif font-medium text-white p-2">
+                    <li class="hover:bg-white  hover:text-blue-500 p-2 cursor-pointer rounded-sm ">notify</li>
+                    <li class="hover:bg-white  hover:text-blue-500 p-2 cursor-pointer rounded-sm">Apply</li>
+                    <li class="hover:bg-white  hover:text-blue-500 p-2 cursor-pointer rounded-sm">Jobs</li>
+                    <li class="hover:bg-white  hover:text-blue-500 p-2 cursor-pointer rounded-sm">Profile</li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main- Section -->
+
+    <main class="flex">
+        <div class="flex p-10">
+
+            <div>
+                <!-- Alert Division -->
+                <div id="mainDiv"> </div>
+                <!-- foem-division -->
+                <form action=""
+                    class="flex flex-col  space-y-5 items-center font-sans font-semibold rounded-lg   bg-gray-300">
+
+                    <h1 class=" bg-blue-500 w-full text-center p-2 rounded-t-md">Profile Card Generator</h1>
+                    <div
+                        class="flex flex-col  space-y-5 items-center font-sans font-semibold rounded-lg  p-5  bg-gray-300">
+                        <div class="p-2  ">
+                            <label for="nameInput" class="">Name :</label>
+                            <input id="nameInput"
+                                class="border-2 border-gray-300 rounded-md  bg-white outline-none placeholder: px-1  text-sm  "
+                                type="text" placeholder="Enter Your Name" minlength="5" maxlength="24" required>
+
+                        </div>
+                        <div class="p-2">
+                            <label for="jobInput">Title :</label>
+                            <input id="jobInput"
+                                class="border-2 border-gray-300 rounded-md bg-white outline-none placeholder: px-1  text-sm   "
+                                type="text" placeholder="Enter Your Job Title " minlength="5" maxlength="24" required>
+                        </div>
+                        <div class="p-2">
+                            <label for="imgFile" class="text-sm">Profile Image : </label>
+                            <input id="imgFile" class="border   bg-white   text-sm w-45  " type="file" minlength="5"
+                                maxlength="15" required>
+                        </div>
+                        <div>
+                            <button id="createBtn" class="bg-blue-600 text-white p-1    rounded-md">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Profile generator -->
+
+        <div id="profileCard" class="flex flex-wrap space-x-5 max-h-fit max-w-screen  my-10    bg-black ">
+
+
+            <h1 id="divNotify" class="text-white py-50 px-100">No Profile Card</h1>
+
+        </div>
+
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

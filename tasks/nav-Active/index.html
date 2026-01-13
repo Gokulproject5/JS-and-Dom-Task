@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: "Figtree", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body>
+                 <!-- Nav Bar -->
+    <header>
+        <nav class="bg-purple-600 text-white px-10 py-5 flex items-center justify-between fixed top-0 w-full">
+            <div>
+                <h1>Webes</h1>
+            </div>
+            <div class="flex justify-around gap-8 font-medium ">
+                <a class="navItem transition-all duration-400 hover:text-purple-400  hover:bg-white p-1 active:underline rounded"
+                    href="#home">Home</a>
+                <a class="navItem transition-all duration-400 hover:text-purple-400  hover:bg-white p-1 rounded active:underline"
+                    href="#about">About</a>
+                <a class="navItem transition-all duration-400 hover:text-purple-400  hover:bg-white p-1 rounded"
+                    href="#contact">Contact</a>
+                <a class="navItem transition-all duration-400 hover:text-purple-400  hover:bg-white p-1 rounded"
+                    href="#profile">Profile</a>
+            </div>
+        </nav>
+    </header>
+     
+       <!-- Main Section -->
+
+    <main>
+        <div class="bg-black text-white h-screen w-full flex justify-center items-center ">
+
+            <h1 id="home">Home</h1>
+
+        </div>
+        <div id="about" class="bg-purple-600 text-white h-screen w-full flex justify-center items-center">
+
+            <h1>About</h1>
+
+        </div>
+        <div id="contact" class="bg-white text-black h-screen w-full flex justify-center items-center">
+
+            <h1>Contact</h1>
+
+        </div>
+        <div id="profile" class="bg-gray-900 text-white h-screen w-full flex justify-center items-center">
+
+            <h1>Profile</h1>
+
+        </div>
+
+
+    </main>
+
+                 <!-- Script File -->
+
+    <script>
+        // Selecting the Element Using QuerySelector
+        const navLinks = document.querySelectorAll(".navItem");
+
+        // Add the Event Listener Using Loop
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+
+                // Rmove the Color 
+                navLinks.forEach(item => {
+                    item.classList.remove("bg-white", "text-purple-400");
+
+                });
+
+             // Add the  Color    
+                link.classList.add("bg-white", "text-purple-400");
+
+            });
+        });
+
+    </script>
+</body>
+
+</html>
