@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="bg-slate-500">Show/hide</title>
+    <!-- Favicon  -->
+    <link rel="shortcut icon" href="/task-manager/assets/favicon.png" type="image/x-icon">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap" rel="stylesheet">
+
+    <!-- Fontawsome Icon Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        header{
+            font-family: "Figtree", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+         .normal{
+            font-family: "Figtree", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body class="bg-[url(/task-manager/assets/bg-1.jpg)] bg-cover bg-no-repeat ">
+    <header>
+        <nav
+            class="border-b-4 border-gray-400 bg-linear-to-r  from-purple-500  to-white  text-white flex justify-between items-center">
+            <div class=" px-4 ">
+                <h1
+                    class="text-2xl  bg-linear-to-r  from-gray-200 from-50% to-55%   to-white  text-transparent bg-clip-text  font-bold  ">
+                    <a href="/index.html">Gokul</a>
+                </h1>
+            </div>
+            <div>
+                <h1>Show/hide</h1>
+            </div>
+            <div class="text-sm p-4 space-x-3 text-purple-900 ">
+
+                <a href="/task-manager/tasks/index.html" class="hover:text-purple-600 p-2 rounded">Home</a>
+
+
+            </div>
+        </nav>
+    </header>
+
+    <main >
+        <section>
+            <div class="flex flex-col items-center m-10 ">
+                <div class="py-2  bg-blue-400 rounded-lg shadow-lg shadow-black">
+                <h1 class="normal  text-white text-center">Login</h1>
+                <div class=" flex flex-col  bg-gray-300 w-74 px-7 py-10">
+                    
+                    <label for="" class="normal  ">Email<span class="text-red-500 text-xl">*</span></label>
+                    <input type="email" class="bg-white mb-2 text-sm  px-2 py-1 rounded outline-none" placeholder="Enter your email">
+                     <label class="normal" for="inputEl">Password<span class="text-red-500 text-xl">*</span></label>
+                   <div class="flex bg-white   px-2  rounded outline-none justify-between">
+                     <input id="inputEl" type="password" class="bg-white   text-sm py-1 px-2  rounded outline-none"
+                        placeholder="Enter your password">
+                    <button>👁</button>
+                   </div>
+                     <button class="bg-blue-500 text-white px-2 py-1 mt-5 transition-all duration-600 delay-300 ease-in-out">Login</button>
+                   </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let inputEl = document.querySelector("#inputEl");
+        let btnEl = document.querySelector("button");
+
+       btnEl.addEventListener("click", () => {
+    const isPassword = inputEl.type === "password";
+    inputEl.type = isPassword ? "text" : "password";
+    btnEl.innerText = isPassword ? "🙈" : "👁";
+   
+});
+    </script>
+</body>
+
+</html>

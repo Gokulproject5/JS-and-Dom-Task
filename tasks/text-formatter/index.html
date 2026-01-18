@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Formatter</title>
+    <!-- Favicon  -->
+    <link rel="shortcut icon" href="/task-manager/assets/favicon.png" type="image/x-icon">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap" rel="stylesheet">
+
+    <!-- Fontawsome Icon Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            font-family: "Figtree", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body class="bg-[url(/task-manager/assets/bg-1.jpg)] bg-cover bg-no-repeat ">
+    <header>
+        <nav
+            class="border-b-4 border-gray-400 bg-linear-to-r  from-purple-500  to-white  text-white flex justify-between items-center">
+            <div class=" px-4 ">
+                <h1
+                    class="text-2xl  bg-linear-to-r  from-gray-200 from-50% to-55%   to-white  text-transparent bg-clip-text  font-bold  ">
+                    <a href="/index.html">Gokul</a>
+                </h1>
+            </div>
+            <div>
+                <h1>TexT Formatter</h1>
+            </div>
+            <div class="text-sm p-4 space-x-3 text-purple-900 ">
+
+                <a href="/task-manager/tasks/index.html" class=" hover:text-purple-600 p-2 rounded">Home</a>
+
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section >
+            <div class="mx-auto flex flex-col items-center container my-10">
+                  <div id="alertContainer">
+
+                </div>
+              <div class="relative">
+               <div class=" absolute top-15 left-30 z-0  ">
+                   <video  src="/task-manager/assets/bg-video.mp4 " autoplay loop class="w-50 rounded-lg" ></video>
+                   
+                </div>  
+                <div class="relative mt-30 ">
+                     
+                    <textarea id="textBox" rows="10" value="gokul" cols="50"
+                        class="bg-gray-400 focus:outline-orange-400  focus:border-none focus:outline-2  border-2 border-blue-500 rounded placeholder:text-sm px-2"
+                        placeholder="enter your magical words" name="" id=""></textarea>
+                    <div class="absolute top-1 right-0">
+                        <span onclick="copyText()" class="bg-orange-400 py-1 px-2 text-white rounded">copy</span>
+                    </div>
+                </div>
+                <div>
+                    <button data-action="generateText"
+                        class="bg-orange-300 px-2 py-1 rounded-sm hover:bg-orange-400">Text Generator</button>
+                    <button data-action="upperCase"
+                        class="bg-green-400 px-2 py-1 rounded-sm hover:bg-green-500">UpperCase</button>
+                    <button data-action="lowerCase"
+                        class="bg-yellow-300 px-2 py-1 rounded-sm hover:bg-yellow-400">LowerCase</button>
+                    <button data-action="clearText" class="bg-red-300 px-2 py-1 rounded-sm hover:bg-red-400">Clear
+                        Text</button>
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- script -->
+    <script>
+        let textBoxEl = document.getElementById("textBox");
+        const buttonsEl = document.querySelectorAll("button");
+        let alertContainer = document.getElementById("alertContainer");
+
+
+        //    alert color 
+        const alertColor = {
+            textGen: "bg-blue-400",
+            upper: "bg-green-400",
+            lower: "bg-yellow-400",
+            clear: "bg-red-400",
+            copy: "bg-gray-400",
+        }
+
+        // Copy function
+        function copyText() {
+            let textToCopy = textBoxEl.value;
+            navigator.clipboard.writeText(textToCopy);
+            let copySpanEl = document.querySelector("span");
+            copySpanEl.innerText = `Copied `;
+            alertPopup("Text Copied", `copy`);
+            setTimeout(() => {
+                copySpanEl.innerText = `Copy `
+
+            }, 2000);
+        }
+
+
+        //    Add event listener 
+        buttonsEl.forEach(btnel => {
+            console.log(btnel)
+            btnel.addEventListener("click", () => {
+                if (btnel.dataset.action == "generateText") {
+                    generateText();
+                }
+                else if (btnel.dataset.action == "upperCase") {
+                    upperCase();
+                } else if (btnel.dataset.action == "lowerCase") {
+                    lowerCase();
+                } else if (btnel.dataset.action == "clearText") {
+                    clearText();
+                }
+
+
+            })
+
+            //   function for btn
+
+
+            const generateText = () => {
+
+                textBoxEl.value = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quis, in, error voluptate adipisci eos ut et ad tempora laudantium asperiores repellat quasi excepturi accusantium necessitatibus assumenda. Saepe ducimus atque dignissimos consequatur amet dolorem. Nostrum, inventore dolorem aliquam asperiores nesciunt ex qui iure sed voluptatem quo neque perspiciatis iste eos repellat ipsum quidem quod architecto, libero autem sequi, dolorum suscipit ducimus quia? Quibusdam, aspernatur. Deserunt voluptates reprehenderit iusto alias velit explicabo tenetur quas necessitatibus sapiente voluptas repellendus placeat autem, delectus vitae voluptatibus! Quas nihil vitae autem expedita dolores labore exercitationem, quos temporibus blanditiis repellendus? Nobis saepe aut pariatur itaque ea reiciendis veritatis neque voluptatem corporis laudantium cupiditate totam repellendus illum, minima ducimus vel quos necessitatibus at? Tempore tenetur consectetur tempora perspiciatis dolore nisi dolorum aperiam quam magnam debitis quis possimus deserunt, molestiae sunt, sit veritatis nostrum repellendus cupiditate quidem neque beatae laborum, eveniet laudantium. Iste amet natus quaerat animi quibusdam dicta, nemo nesciunt consequuntur voluptate eligendi optio culpa nostrum id harum! Tempore, quae sint quam possimus alias excepturi aspernatur, commodi illo minima aut cumque accusamus deleniti facilis quasi voluptas harum ab, unde debitis dolorem maiores illum fugiat doloribus quaerat recusandae! Impedit quisquam ullam, sint excepturi fugiat vitae illo cupiditate libero culpa, quaerat soluta iure minima delectus eaque exercitationem vero consequatur officiis hic inventore ipsam quos. Officiis dolore quod consequatur tempora sint odit est commodi quam esse ad inventore reiciendis incidunt maiores iusto ducimus itaque, eligendi repellat unde corporis voluptatum amet ex tempore rerum dolor. Quibusdam adipisci, quaerat necessitatibus neque repellendus rem rerum itaque? Quia iusto, eaque voluptatem molestiae illo, eum necessitatibus quod voluptatibus eligendi saepe possimus voluptas quam aut mollitia beatae hic. Eum vero accusamus aut fugit amet fuga doloremque corrupti voluptatibus ipsa molestiae quam culpa totam error a nihil dolorum eveniet corporis, facere commodi est blanditiis! Eum soluta quam quaerat assumenda unde eveniet earum nemo error, ipsa, provident voluptate quo minus odio? Eligendi magni, soluta dolorum consequatur accusamus vitae laboriosam, ducimus laudantium optio repellendus rerum, minus asperiores repudiandae pariatur eius ratione. Ex repellendus harum eligendi, nulla a maiores deserunt obcaecati quidem cum quos id sint, hic fugit, sunt minima ducimus fuga. Quae, accusamus facere quod laboriosam aspernatur, dicta blanditiis debitis obcaecati reiciendis sunt voluptate inventore dignissimos quo similique atque perspiciatis id iusto, corrupti odio quidem. Unde sit rem iure, aliquid itaque perspiciatis molestias, quaerat sint voluptate harum repellat quidem ducimus animi? Quisquam vel eveniet laborum! Iusto doloremque exercitationem ratione dolorum omnis iste illo ab aliquid non aliquam, accusantium officia delectus enim voluptas! Consequatur, natus repudiandae excepturi suscipit nulla fuga corrupti libero dolorum assumenda perferendis, aliquam eaque sunt tempora! Laboriosam reprehenderit blanditiis accusamus aliquam, non eligendi et quia sapiente, ut quos velit nemo quod quibusdam illum repellat? Culpa, optio, debitis ad, ea aliquam odit accusamus dolorem facere enim placeat adipisci ipsam temporibus numquam non soluta vel ipsa? Saepe nisi blanditiis tempora id repellat molestiae aliquam quidem quo officiis commodi veritatis placeat quasi obcaecati quod recusandae, ab qui? Atque assumenda natus nisi repellendus saepe consequatur nesciunt, recusandae adipisci reprehenderit alias neque odio dolore, facilis vitae odit optio necessitatibus architecto illo fugit? Minima, ipsum. Ab eveniet esse, perferendis minima sapiente ratione alias fugit quos nam rerum minus vitae, sed delectus quidem omnis odio praesentium. Beatae itaque commodi quas! Facilis inventore possimus fugiat, placeat suscipit quasi iusto officiis quisquam nisi tempore illum dolorum repellat minus, rem ullam, aut tenetur cumque. Dolorum ipsam, quasi magni provident nihil illo excepturi sapiente, dignissimos consequuntur labore fugiat. Tenetur eum adipisci rem maiores labore veritatis voluptatum laudantium cumque beatae optio eveniet magnam, officia unde perferendis quis, culpa in pariatur veniam expedita. Optio nobis at praesentium voluptates fugit aliquam nulla beatae ab distinctio ad quia consectetur, quis et. Suscipit doloribus fugiat eum eaque aspernatur non necessitatibus qui illo porro id minima vero omnis aliquid unde dolore saepe, vel earum repudiandae delectus, et nesciunt repellendus asperiores neque minus! Sint tempore eveniet eos, architecto voluptas iste ex, natus corrupti eius reprehenderit dicta, itaque beatae suscipit! Quia suscipit, aspernatur similique voluptatem, quibusdam ab soluta deserunt, molestiae at a id. Voluptatem beatae id praesentium distinctio architecto eos excepturi animi, atque aspernatur adipisci aut, saepe quia perspiciatis sapiente perferendis minus fugit unde alias quaerat! Sunt perspiciatis beatae doloremque. Nesciunt enim dolore fugit nemo iste similique soluta veritatis natus quam, qui praesentium adipisci porro, mollitia veniam! Iure quo eligendi, explicabo adipisci ab ducimus aperiam iste. Libero, minus dolor, corrupti illo necessitatibus id debitis, deleniti quidem possimus facilis pariatur labore! Perferendis quas dolorum doloribus fugit libero praesentium, at, culpa corporis hic eveniet minima temporibus totam rerum illo tenetur nam nostrum asperiores sequi magni maxime neque saepe? Aliquid natus omnis sint iste illum esse, debitis cupiditate earum molestiae adipisci delectus voluptate molestias temporibus culpa recusandae quasi inventore. Quas cumque saepe consectetur commodi incidunt voluptatem, aspernatur ipsam beatae fuga natus autem laboriosam ratione vitae molestiae quod iste dolorem! Quia, nesciunt aspernatur impedit aliquam excepturi nihil accusamus sit omnis tempore molestiae nulla error praesentium maiores tempora nisi doloribus vero modi magnam ex repudiandae, commodi temporibus mollitia. Officia eaque dolorem vel, cumque hic nisi nihil aspernatur, magnam veritatis unde ipsa quisquam tempora voluptate nulla similique cupiditate! Itaque accusantium voluptas atque omnis, ipsa deleniti! Quasi, officiis? Mollitia sunt libero atque odio laudantium repellat vel earum fuga corporis animi ratione recusandae numquam officiis eaque fugiat error obcaecati suscipit veritatis incidunt in, qui deserunt. Unde molestiae non tempora necessitatibus, dolorem quas libero nobis voluptatum. Reiciendis eligendi magnam deserunt quis vel corrupti sit. Deserunt dolorum eos consequuntur facere. Perferendis saepe labore adipisci id mollitia fuga quos fugiat, nam illo aspernatur excepturi maiores soluta repudiandae facere voluptate placeat molestiae dolore asperiores expedita! Laborum repellat vel magnam eaque mollitia excepturi. Et, laboriosam asperiores. Eveniet eum dolore inventore enim soluta nam harum, qui, consequuntur delectus reiciendis explicabo hic voluptas veniam quos provident illum? A, commodi. Laborum cupiditate veniam doloremque consectetur ipsam aut officiis corrupti animi error, maiores ipsa nostrum quaerat sequi assumenda perspiciatis nemo ad minima commodi aliquam aspernatur recusandae qui. Incidunt, perferendis aperiam! Accusantium quasi, vitae magnam molestiae dolor, repellendus rem quas corrupti delectus harum quidem?`
+                alertPopup("Text generated", `textGen`);
+            }
+
+            const upperCase = () => {
+                let textBox = textBoxEl.value.toUpperCase();
+                textBoxEl.value = textBox;
+                console.log(textBox);
+                alertPopup("Text convert into upperCase", `upper`);
+            }
+
+            const lowerCase = () => {
+                let textBox = textBoxEl.value.toLowerCase();
+                textBoxEl.value = textBox
+                console.log(textBox);
+                alertPopup("Text convert into lowerCase", `lower`);
+            }
+
+            const clearText = () => {
+                textBoxEl.value = "";
+                console.log(textBox);
+                alertPopup("Clear ALL Text", `clear`);
+            }
+        })
+
+
+        // alert function 
+        function alertPopup(message, color) {
+            let alertText = document.createElement("p");
+            alertText.className = `p-2 text-white w-120 rounded  m-2 transition-all duration-300 ease-in-out delay-300`
+            alertText.innerText = message;
+            alertText.classList.add(`${alertColor[color]}`)
+            alertContainer.append(alertText)
+            setTimeout(() => {
+                alertText.remove();
+            }, 2000);
+        }
+
+
+    </script>
+</body>
+
+</html>
