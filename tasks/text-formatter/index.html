@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Formatter</title>
+    <!-- Favicon  -->
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap" rel="stylesheet">
+
+    <!-- Fontawsome Icon Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            font-family: "Figtree", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                
+                transform: translateX(0);
+            }
+
+            25% {
+               
+                transform: translateX(-6px);
+            }
+
+            50% {
+                 
+                transform: translateX(6px);
+            }
+
+            75% {
+               
+                transform: translateX(-6px);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[url(/bg-1.jpg)] bg-cover bg-no-repeat ">
+    <header>
+        <nav
+            class="border-b-4 border-gray-400 bg-linear-to-r  from-purple-500  to-white  text-white flex justify-between items-center">
+            <div class=" px-4 ">
+                <h1
+                    class="text-rounded-md  bg-linear-to-r  from-gray-200 from-50% to-55%   to-white  text-transparent bg-clip-text  font-bold  ">
+                    <a href="/index.html">Gokul</a>
+                </h1>
+            </div> 
+            <div>
+                <h1>TexT Formatter</h1>
+            </div>
+            <div class="text-sm p-4 space-x-3 text-purple-900 ">
+
+                <a href="/tasks/index.html" class=" hover:text-purple-600 p-2 rounded">Task</a>
+                
+              i
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <div class="mx-auto flex flex-col items-center container my-10">
+                <div id="alertContainer" class="fixed top-20 right-6 space-y-3 z-50" >
+                </div>
+                <div class="relative">
+                    <div class=" absolute top-15 left-35 mx-auto z-0  ">
+                        <video src="/assets/bg-video.mp4 " autoplay loop class="w-50 rounded-lg"></video>
+
+                    </div>
+                    <div class="relative mt-30 z-20">
+
+                        <textarea id="textBox" rows="10" value="gokul" cols="50"
+                            class="bg-gray-300 z-20  focus:outline-none placeholder:text-xl text-white text-justify px-5 bg-[url(/bg-1.jpg)] bg-contain  focus:border-none focus:outline-2  focus:rounded-lg border-2 border-gray-500 rounded-lg  shadow-xl shadow-gray-400"
+                            placeholder="enter your magical words" name="" id=""></textarea>
+                        <div class="absolute top-1 right-0">
+                            <span onclick="copyText()"
+                                class="bg-gray-500 py-1 px-2 text-white rounded-b rounded-r cursor-copy select-none">copy</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-center space-x-2 z-50 mt-10">
+                        <button data-action="generateText"
+                            class="bg-orange-400 px-2 py-1 rounded-md hover:bg-orange-500 shadow-md shadow-orange-400 hover:-translate-y-2 transition-all duration-300 ease-in-out delay-100 cursor-pointer">Text
+                          Generator</button>
+                        <button data-action="upperCase"
+                            class="bg-green-400 px-2 py-1 rounded-md hover:bg-green-500 shadow-md  shadow-green-400 hover:-translate-y-2 transition-all duration-300 ease-in-out delay-100 cursor-pointer">UpperCase</button>
+                        <button data-action="lowerCase"
+                            class="bg-yellow-300 px-2 py-1 rounded-md hover:bg-yellow-400 shadow-md shadow-yellow-400 hover:-translate-y-2 transition-all duration-300 ease-in-out delay-100 cursor-pointer">LowerCase</button>
+                        <button data-action="clearText"
+                            class="bg-red-400 px-2 py-1 rounded-md hover:bg-red-500 shadow-md shadow-red-400 hover:-translate-y-2 transition-all duration-300 ease-in-out delay-100 cursor-pointer">Clear
+                            Text</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- script -->
+   <script>
+    let textBoxEl = document.getElementById("textBox");
+    const buttonsEl = document.querySelectorAll("button[data-action]");
+    let alertContainer = document.getElementById("alertContainer");
+
+    // Alert Colors
+    const alertColor = {
+        textGen: "bg-blue-400",
+        upper: "bg-green-400",
+        lower: "bg-yellow-400",
+        clear: "bg-red-400",
+        copy: "bg-gray-400",
+        error: "bg-red-600"
+    };
+
+    // Toast Alert Function
+    function alertPopup(message, color, isError = false) {
+        const alert = document.createElement("div");
+
+        alert.className = `
+            flex items-center gap-3 px-4 py-2 rounded-lg shadow-lg text-white
+            ${alertColor[color]}
+           transition-all ease-in-out duration-300 delay-200
+        `;
+
+        alert.innerHTML = `
+            <i class="fa-solid fa-circle-info"></i>
+            <span>${message}</span>
+        `;
+
+        if (isError) {
+            alert.classList.add("animate-[shake_0.4s_ease]");
+        }else{
+            alert.classList.add("animate-[slideIn_0.5s_ease]")
+        }
+
+        alertContainer.append(alert);
+
+       
+        setTimeout(() => {
+            alert.remove();
+        }, 2000);
+    }
+
+    // Copy function
+    function copyText() {
+        let textToCopy = textBoxEl.value;
+
+        if (!textToCopy) {
+            alertPopup("Nothing to copy!", "error", true);
+            return;
+        }
+         else
+        navigator.clipboard.writeText(textToCopy);
+
+        let copySpanEl = document.querySelector("span");
+        copySpanEl.innerText = `Copied`;
+
+        alertPopup("Text Copied", "copy");
+
+        setTimeout(() => {
+            copySpanEl.innerText = `Copy`;
+        }, 2000);
+    }
+
+    // Button actions
+    buttonsEl.forEach(btnel => {
+        btnel.addEventListener("click", () => {
+
+            if (btnel.dataset.action === "generateText") {
+                generateText();
+            }
+            else if (btnel.dataset.action === "upperCase") {
+                upperCase();
+            }
+            else if (btnel.dataset.action === "lowerCase") {
+                lowerCase();
+            }
+            else if (btnel.dataset.action === "clearText") {
+                clearText();
+            }
+        });
+    });
+
+    // Functions
+    function generateText() {
+        textBoxEl.value = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, totam vitae consectetur quibusdam maxime laborum consequuntur similique autem, dolore, voluptatem soluta voluptatibus provident? Expedita similique, eveniet debitis dolor optio placeat asperiores deserunt corporis ea dignissimos doloribus eos minima voluptatum repellat voluptates obcaecati nihil ex fugiat nobis reprehenderit sunt! Voluptatum veritatis recusandae eligendi. Odio excepturi, magni porro facilis id dicta? Ducimus ea explicabo amet dolore dignissimos sunt asperiores tempore. Iure atque vel voluptates consectetur minima? Nesciunt, cumque perferendis beatae amet, minus molestias incidunt voluptatibus totam aperiam iste itaque fugiat mollitia. Explicabo iure incidunt pariatur quidem et deserunt in consequuntur sunt impedit.";
+        alertPopup("Text generated", "textGen");
+    }
+
+    function upperCase() {
+        if (!textBoxEl.value) {
+            alertPopup("Textbox is empty!", "error", true);
+            return;
+        }
+
+        textBoxEl.value = textBoxEl.value.toUpperCase();
+        alertPopup("Text converted to Uppercase", "upper");
+    }
+
+    function lowerCase() {
+        if (!textBoxEl.value) {
+            alertPopup("Textbox is empty!", "error", true);
+            return;
+        }
+
+        textBoxEl.value = textBoxEl.value.toLowerCase();
+        alertPopup("Text converted to Lowercase", "lower");
+    }
+
+    function clearText() {
+        if (!textBoxEl.value) {
+            alertPopup("Textbox is already empty!", "error", true);
+            return;
+        }
+
+        textBoxEl.value = "";
+        alertPopup("All text cleared", "clear");
+    }
+</script>
+
+</body>
+
+</html>

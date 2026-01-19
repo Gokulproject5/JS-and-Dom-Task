@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopee Search</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+      <!-- Fontawsome Icon Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-black text-white">
+
+  <header>
+    <nav class="bg-yellow-500 relative text-black flex justify-between items-center py-5 px-5 font-medium">
+       <div class="fixed top-5 left-2 ">
+                     <li class="bg-black font-medium flex px-1  hover:bg-gray-300"><a href="/tasks/index.html"><i class="fa-solid fa-arrow-left"
+                            style="color: #B197FC; "></i>
+                    </a>
+                </li>
+                </div>
+      <h1 class="px-5">Shopee</h1>
+      <div class="flex space-x-5">
+        <p>Product</p>
+        <p>About</p>
+        <p>Cart</p>
+        <p>Contact</p>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Search -->
+    <div class="flex justify-center py-10">
+      <div class="flex items-center gap-2 border border-gray-400 rounded-xl p-1 w-[400px]">
+        <input id="inputEl" type="text" placeholder="Search..."
+          class="flex-2 bg-transparent outline-none placeholder:text-gray-300" />
+        <button id="btnEl" class="bg-yellow-400 text-black px-4 py-1 rounded-xl border border-yellow-600">
+          Search
+        </button>
+      </div>
+    </div>
+
+    <!-- Product List -->
+    <ul id="ulEl" class="flex flex-wrap gap-4 px-50 mb-50 justify-center"></ul>
+  </main>
+
+  <script>
+    const inputEl = document.getElementById("inputEl");
+    const btnEl = document.getElementById("btnEl");
+    const ulEl = document.getElementById("ulEl");
+
+    // Product data
+    const products = Array.from({ length: 50 }, (_, i) => `Product ${i + 1}`);
+
+   
+    
+    // Function for get a data flexibile
+    function renderList(data) {
+      ulEl.innerHTML = "";
+   
+       console.time("Fragment Time")
+      const fragment = document.createDocumentFragment();
+
+      if (!data.length) {
+        const li = document.createElement("li");
+        li.textContent = "No results found ❌";
+        li.className =
+          "bg-yellow-500 text-black font-medium px-6 py-3 rounded w-100";
+        fragment.appendChild(li);
+      } else {
+        data.forEach(product => {
+          const li = document.createElement("li");
+          li.textContent = product;
+          li.className =
+            "bg-yellow-500 text-black font-medium p-5 rounded w-[150px] text-center";
+          fragment.appendChild(li);
+        });
+      }
+
+        // Append fragment
+      ulEl.appendChild(fragment);
+      console.timeEnd("Fragment Time")
+    }
+
+
+
+    // Search logic
+    function handleSearch(value) {
+      const keyword = value.trim().toLowerCase();
+      const filtered = keyword
+        ? products.filter(product => product.toLowerCase().includes(keyword))
+        : products;
+
+        
+      renderList(filtered);
+    }
+
+    // Event For Search
+    btnEl.addEventListener("click", () => handleSearch(inputEl.value));
+
+    // Initial render
+    renderList(products);
+  </script>
+
+</body>
+
+</html>

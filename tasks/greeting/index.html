@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Greeting</title>
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap" rel="stylesheet">
+
+    
+      <!-- Fontawsome Icon Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            font-family: "Figtree", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+        }
+    </style>
+</head> 
+<body>
+    <header>
+        <div class="bg-blue-400 py-3 px-2 text-center">
+            <nav class="relative">
+                <li>🤖 Greeting BOT</li>
+                <div class="fixed top-5 left-2 ">
+                     <li class="bg-white font-medium flex px-1 "><a href="/tasks/index.html"><i class="fa-solid fa-arrow-left"
+                            style="color: #B197FC;"></i>
+                    </a>
+                </li>
+                </div>
+            </nav>
+        </div>
+    </header>
+   <main class="flex flex-col justify-start bg-gray-500  h-[600px] py-20  space-y-10 mx-auto">
+         <div class="flex justify-center">
+            <h1 id="textId" class="text-blue-400 ">Give Your Name In Input Box and See MAgic</h1>
+         </div>
+        <div id="inpDiv"  class=" flex gap-5 bg-black justify-center mx-auto py-10 px-5  rounded-md ">
+            <input type="text" placeholder="Enter Your Name" class="border bg-slate-200 border-gray-800 rounded px-1" required>
+            <button class="bg-blue-600 text-white font-medium px-2 py-1 rounded ">Click Me</button>
+            
+        </div>
+        <div id="mainDiv" class="mx-auto  animate-[puls"e_3s_ease-in-out_infinite]">
+
+        </div>
+   </main> 
+    <script>
+        const inpEl = document.querySelector("input");
+        const btnEl = document.querySelector("button");
+        const mainDiv = document.getElementById("mainDiv");
+        const inpDiv = document.getElementById("inpDiv");
+        const textId = document.getElementById("textId");
+ 
+        //  Adding Function
+        btnEl.addEventListener("click",()=>{
+            if(inpEl.value ===""){
+                return alert(`Enter Input Field`)
+            }
+            mainDiv.innerHTML="";
+            const greetDiv = document.createElement("div");
+            const textTag = document.createElement("h2");
+            
+            // greeting style 
+
+            greetDiv.className = "bg-blue-500 text-white py-10 px-5 rounded-lg " 
+               
+            // textTag  
+            textTag.className = "text-medium capitalize animate-pulse"
+
+            textTag.innerText = `Hi ${inpEl.value},Welcome to  My webpage`
+
+            textId.textContent = `Thank You For Visit My Web Page`;
+            textId.classList.toggle(`animate-[ping_3s_ease-in-out_infinite]`);
+
+             inpDiv.classList.toggle("hidden")
+            
+            greetDiv.append(textTag);
+            mainDiv.append(greetDiv);
+            
+           setTimeout(() => {
+            textId.classList.toggle(`animate-[ping_3s_ease-in-out_infinite]`);
+            textId.textContent = "Give Your Name In Input Box and See MAgic";
+            inpDiv.classList.toggle("hidden");
+            greetDiv.remove();
+           }, 4000);
+              inpEl.value="";
+        })
+         
+    </script>
+</body>
+</html>

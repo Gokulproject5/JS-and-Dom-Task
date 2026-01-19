@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop List</title>
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <style>
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+
+</head>
+
+<body class="flex flex-col justify-center items-center bg-gray-200 ">
+    <header>
+        <div class="w-screen flex bg-blue-700 text-xl text-white text-center font-sans p-3 shadow-2xl font-semibold shadow-gray-400"
+            id="heading">
+           
+            <div class="w-screen  bg-blue-700 text-xl text-white text-center font-sans p-3  font-semibold ">
+            <h1> <i class="fa-solid fa-bag-shopping"></i> Shopping List</h1>
+            
+
+            </div>
+      
+       
+          <div class="relative px-5 flex items-center">
+    <h1 class="text-white text-2xl">
+        <i class="fa-solid fa-cart-arrow-down"></i>
+    </h1>
+
+    <!-- Badge -->
+    <div  class="absolute top-1 right-3 bg-red-500 text-white rounded-full w-5 h-5 
+                flex items-center justify-center text-xs font-bold shadow" id="cartCount">
+        0
+    </div>
+</div>
+
+         
+        </div>
+        </div>
+    </header>
+    <main class="flex flex-col items-center justify-center  py-10 ">
+
+        <div id="alertBox" class="fixed top-20 right-30 space-y-3">
+  
+        </div>
+
+
+
+        <div class="bg-white text-xl font-medium w-100 md:w-150  py-5  flex-col items-center rounded   shadow-xl ">
+            <div class="bg-white text-xl font-medium  justify-center flex items-center space-x-2 p-0 md:px-2 ">
+                <input type="text" placeholder="Add Your Bucket List ...." id="inputEl" required
+                    class="bg-gray-200 opacity-90 w-[50%] md:w-[70%]  text-gray-600 outline-none py-1 rounded text-sm placeholder:font-thin placeholder:px-1  ">
+                <button id="btnEl"
+                    class=" p-1 bg-blue-600 text-sm text-white font-semibold rounded hover:bg-blue-700">Add
+                    Item</button>
+                <button id="clearAll"
+                    class="py-1 px-2 bg-red-500 text-sm  text-white rounded hover:bg-red-600">Clear</button>
+            </div>
+        </div>
+
+
+
+        <div id="ulDiv" class="w-full md:w-150 py-10  ">
+            <ul id="ulEl" class="space-y-1  ">
+
+
+            </ul>
+        </div>
+
+    </main>
+
+    <!-- script  -->
+
+
+    <script src="/tasks/shop/script.js"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background-Color Switcher</title>
+    <!-- Tailwind Config Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap" rel="stylesheet">
+
+      <!-- Fontawsome Icon Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            font-family: "Figtree", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            color: #8a29da;
+        }
+    </style>
+</head>
+
+<body id="bg_change" class="bg-black">
+
+    <header>
+        <div class=" py-5 px-5 font-semibold text-center">
+            <nav class="flex">
+
+                <li class="bg-white font-medium flex px-1 "><a href="/tasks/index.html"><i class="fa-solid fa-arrow-left"
+                            style="color: #B197FC;"></i>
+                    </a>
+                </li>
+            </nav>
+        </div>
+    </header>
+    <main class="w-screen h-100 flex justify-center">
+        <div class="">
+            <div>
+                <div
+                    class="select-none bg-slate-400 hover:bg-slate-300 border-collapse border-6 border-white/30 hover:transition-all duration-700 rounded-full flex justify-around w-fit  m-10 px-5 space-x-1 py-4">
+                    <button
+                        class=" bg-red-300 px-2 py-1 rounded-sm  hover:scale-150 hover:transition-all duration-300 hover:px-5 hover:mx-5 hover:rounded-full cursor-pointer active:scale-150 active:-translate-y-5  active:transition-all  active:px-5 active:mx-7 active:rounded-full active:shadow-lg active:shadow-black/50">Red</button>
+                    <button
+                        class="bg-orange-300 px-2 py-1 rounded-sm   hover:scale-150 hover:transition-all duration-300 hover:px-5 hover:mx-5 hover:rounded-full cursor-pointer active:scale-150 active:-translate-y-5  active:transition-all  active:px-5 active:mx-7 active:rounded-full active:shadow-lg active:shadow-black/50  ">Orange</button>
+                    <button
+                        class="bg-blue-300 px-2 py-1 rounded  hover:scale-150 hover:transition-all duration-300 hover:px-5 hover:mx-5 hover:rounded-full cursor-pointer active:scale-150 active:-translate-y-5  active:transition-all  active:px-5 active:mx-7 active:rounded-full active:shadow-lg active:shadow-black/50  ">Blue</button>
+                    <button
+                        class="bg-green-300 px-2 py-1 rounded  hover:scale-150 hover:transition-all duration-300 hover:px-5 hover:mx-5 hover:shadow-2xl hover:shadow-green-500-400 hover:rounded-full cursor-pointer active:scale-150 active:-translate-y-5  active:transition-all  active:px-5 active:mx-7 active:rounded-full active:shadow-lg active:shadow-black/50 ">Green</button>
+                    <button
+                        class="bg-purple-300 px-2 py-1 rounded-sm  hover:scale-150 hover:transition-all duration-300 hover:px-5 hover:mx-5 hover:rounded-full cursor-pointer active:scale-150 active:-translate-y-5 active:transition-all  active:px-5 active:mx-7 active:rounded-full active:shadow-lg active:shadow-black/50 ">Purple</button>
+                    <p class="bg-linear-to-tr from-pink-500 from-40% to-70% bg-blend-normal 
+                     to-white px-2 py-1 rounded-sm  cursor-pointer hover:scale-150 hover:transition-all hover:px-5 hover:mx-5 hover:rounded-full duration-300 active:scale-150 active:-translate-y-5  active:transition-all  active:px-5 active:mx-7 active:rounded-full active:shadow-lg active:shadow-black/50  "
+                        onclick="random()">Random</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const btnEls = document.querySelectorAll("button");
+        const bg_change = document.getElementById("bg_change");
+
+        const colorArr = ["bg-pink-200 ", "bg-lime-200", "bg-blue-200", "bg-yellow-200", "bg-purple-200"];
+
+
+
+
+        const colors = {
+            Red: "bg-red-200 transition-all duration-200 ",
+            Orange: "bg-orange-200 transition-all duration-200",
+            Blue: "bg-blue-200 transition-all duration-200 ",
+            Green: "bg-green-200 transition-all duration-200 ",
+            Purple: "bg-purple-200 transition-all  duration-200",
+        }
+
+        btnEls.forEach(element => {
+
+            element.addEventListener("click", (event) => {
+                let color = event.target.textContent;
+
+
+                bg_change.className = `${colors[color]}`;
+
+            })
+
+        });
+
+        function random() {
+            let randomNum = Math.floor(Math.random() * 5);
+
+            bg_change.className = `${colorArr[randomNum]}`
+
+        }
+
+    </script>
+</body>
+
+</html>

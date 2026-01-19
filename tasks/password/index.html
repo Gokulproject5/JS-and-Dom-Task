@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="bg-slate-500">Show/hide</title>
+    <!-- Favicon  -->
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap" rel="stylesheet">
+
+    <!-- Fontawsome Icon Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        header{
+            font-family: "Figtree", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+         .normal{
+            font-family: "Figtree", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+         .dark{
+            font-family: "Figtree", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+   
+   @keyframes fadeIn {
+   from {
+    opacity: 0;
+    transform: translateY(40px);
+   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+    </style>
+</head>
+
+<body class="bg-[url(/bg-1.jpg)] bg-cover bg-no-repeat ">
+    <header>
+        <nav
+            class="border-b-4 border-gray-400 bg-linear-to-r  from-purple-500  to-white  text-white flex justify-between items-center">
+            <div class=" px-4 ">
+                <h1
+                    class="text-2xl  bg-linear-to-r  from-gray-200 from-50% to-55%   to-white  text-transparent bg-clip-text  font-bold  ">
+                    <a href="/index.html">Gokul</a>
+                </h1>
+            </div>
+            <div>
+                <h1>Show/hide</h1>
+            </div>
+            <div class="text-sm p-4 space-x-3 text-purple-900 ">
+
+                <a href="/tasks/index.html" class="hover:text-purple-600 p-2 rounded">Task</a>
+
+
+            </div>
+        </nav>
+    </header>
+
+   <main class="min-h-screen flex items-center justify-center bg-[url('/bg-1.jpg')] bg-cover bg-center">
+  <section>
+    <div class="w-[360px] p-8 rounded-2xl backdrop-blur-xl bg-white/10 shadow-2xl border border-white/20
+                animate-[fadeIn_0.8s_ease]">
+
+      <h1 class="text-center text-2xl font-bold text-white mb-8 tracking-wide">
+        Welcome Back 
+      </h1>
+
+      <!-- Email -->
+      <div class="relative mb-6">
+        <input type="email" required
+          class="peer w-full px-4 pt-5 pb-2 rounded-xl bg-white/90 text-sm outline-none
+                 focus:ring-2 focus:ring-blue-500 transition"
+          placeholder=" ">
+
+        <label
+          class="absolute left-4 top-3 text-gray-500 text-sm transition-all
+                 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base
+                 peer-focus:top-0 peer-focus:text-xs peer-focus:text-blue-500">
+          Email
+        </label>
+      </div>
+
+      <!-- Password -->
+      <div class="relative mb-6">
+        <input id="inputEl" type="password" required
+          class="peer w-full px-4 pt-5 pb-2 rounded-xl bg-white/90 text-sm outline-none
+                 focus:ring-2 focus:ring-purple-500 transition"
+          placeholder=" ">
+
+        <label
+          class="absolute left-4 top-3 text-gray-500 text-sm transition-all
+                 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base
+                 peer-focus:top-0 peer-focus:text-xs peer-focus:text-purple-500">
+          Password
+        </label>
+
+        <button id="toggleBtn" type="button"
+          class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-purple-500 transition">
+          <i class="fa-solid fa-eye"></i>
+        </button>
+      </div>
+
+      <!-- Login Button -->
+      <button id="loginBtn"
+        class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600
+               text-white font-semibold tracking-wide transition-all duration-300
+               hover:-translate-y-1 hover:shadow-xl active:scale-95">
+        Login
+      </button>
+
+    </div>
+  </section>
+</main>
+
+    <script>
+  const inputEl = document.getElementById("inputEl");
+  const toggleBtn = document.getElementById("toggleBtn");
+  const loginBtn = document.getElementById("loginBtn");
+
+  // Password toggle
+  toggleBtn.addEventListener("click", () => {
+    const isPassword = inputEl.type === "password";
+    inputEl.type = isPassword ? "text" : "password";
+    toggleBtn.innerHTML = isPassword
+      ? `<i class="fa-solid fa-eye-slash"></i>`
+      : `<i class="fa-solid fa-eye"></i>`;
+  });
+
+  // Login animation
+  loginBtn.addEventListener("click", () => {
+    loginBtn.innerText = "Logging in...";
+    loginBtn.classList.add("from-gray-400", "to-gray-500");
+    loginBtn.classList.remove("from-blue-500", "to-purple-600");
+
+    setTimeout(() => {
+      loginBtn.innerText = "Login Successful ";
+      loginBtn.classList.remove("from-gray-400", "to-gray-500");
+      loginBtn.classList.add("from-purple-600", "to-blue-500");
+    }, 1500);
+
+    setTimeout(() => {
+      loginBtn.innerText = "Login";
+      loginBtn.classList.remove("from-purple-600", "to-blue-500");
+      loginBtn.classList.add("from-blue-500", "to-purple-600");
+    }, 3500);
+  });
+</script>
+
+</body>
+
+</html>
