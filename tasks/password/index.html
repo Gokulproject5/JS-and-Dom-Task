@@ -33,10 +33,31 @@
             font-weight: 400;
             font-style: normal;
         }
+
+         .dark{
+            font-family: "Figtree", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+   
+   @keyframes fadeIn {
+   from {
+    opacity: 0;
+    transform: translateY(40px);
+   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
     </style>
 </head>
 
-<body class="bg-[url(/task-manager/assets/bg-1.jpg)] bg-cover bg-no-repeat ">
+<body class="bg-[url(/bg-1.jpg)] bg-cover bg-no-repeat ">
     <header>
         <nav
             class="border-b-4 border-gray-400 bg-linear-to-r  from-purple-500  to-white  text-white flex justify-between items-center">
@@ -51,46 +72,103 @@
             </div>
             <div class="text-sm p-4 space-x-3 text-purple-900 ">
 
-                <a href="/task-manager/tasks/index.html" class="hover:text-purple-600 p-2 rounded">Home</a>
+                <a href="/tasks/index.html" class="hover:text-purple-600 p-2 rounded">Task</a>
 
 
             </div>
         </nav>
     </header>
 
-    <main >
-        <section>
-            <div class="flex flex-col items-center m-10 ">
-                <div class="py-2  bg-blue-400 rounded-lg shadow-lg shadow-black">
-                <h1 class="normal  text-white text-center">Login</h1>
-                <div class=" flex flex-col  bg-gray-300 w-74 px-7 py-10">
-                    
-                    <label for="" class="normal  ">Email<span class="text-red-500 text-xl">*</span></label>
-                    <input type="email" class="bg-white mb-2 text-sm  px-2 py-1 rounded outline-none" placeholder="Enter your email">
-                     <label class="normal" for="inputEl">Password<span class="text-red-500 text-xl">*</span></label>
-                   <div class="flex bg-white   px-2  rounded outline-none justify-between">
-                     <input id="inputEl" type="password" class="bg-white   text-sm py-1 px-2  rounded outline-none"
-                        placeholder="Enter your password">
-                    <button>👁</button>
-                   </div>
-                     <button class="bg-blue-500 text-white px-2 py-1 mt-5 transition-all duration-600 delay-300 ease-in-out">Login</button>
-                   </div>
-                </div>
-            </div>
-        </section>
-    </main>
+   <main class="min-h-screen flex items-center justify-center bg-[url('/bg-1.jpg')] bg-cover bg-center">
+  <section>
+    <div class="w-[360px] p-8 rounded-2xl backdrop-blur-xl bg-white/10 shadow-2xl border border-white/20
+                animate-[fadeIn_0.8s_ease]">
+
+      <h1 class="text-center text-2xl font-bold text-white mb-8 tracking-wide">
+        Welcome Back 
+      </h1>
+
+      <!-- Email -->
+      <div class="relative mb-6">
+        <input type="email" required
+          class="peer w-full px-4 pt-5 pb-2 rounded-xl bg-white/90 text-sm outline-none
+                 focus:ring-2 focus:ring-blue-500 transition"
+          placeholder=" ">
+
+        <label
+          class="absolute left-4 top-3 text-gray-500 text-sm transition-all
+                 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base
+                 peer-focus:top-0 peer-focus:text-xs peer-focus:text-blue-500">
+          Email
+        </label>
+      </div>
+
+      <!-- Password -->
+      <div class="relative mb-6">
+        <input id="inputEl" type="password" required
+          class="peer w-full px-4 pt-5 pb-2 rounded-xl bg-white/90 text-sm outline-none
+                 focus:ring-2 focus:ring-purple-500 transition"
+          placeholder=" ">
+
+        <label
+          class="absolute left-4 top-3 text-gray-500 text-sm transition-all
+                 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base
+                 peer-focus:top-0 peer-focus:text-xs peer-focus:text-purple-500">
+          Password
+        </label>
+
+        <button id="toggleBtn" type="button"
+          class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-purple-500 transition">
+          <i class="fa-solid fa-eye"></i>
+        </button>
+      </div>
+
+      <!-- Login Button -->
+      <button id="loginBtn"
+        class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600
+               text-white font-semibold tracking-wide transition-all duration-300
+               hover:-translate-y-1 hover:shadow-xl active:scale-95">
+        Login
+      </button>
+
+    </div>
+  </section>
+</main>
 
     <script>
-        let inputEl = document.querySelector("#inputEl");
-        let btnEl = document.querySelector("button");
+  const inputEl = document.getElementById("inputEl");
+  const toggleBtn = document.getElementById("toggleBtn");
+  const loginBtn = document.getElementById("loginBtn");
 
-       btnEl.addEventListener("click", () => {
+  // Password toggle
+  toggleBtn.addEventListener("click", () => {
     const isPassword = inputEl.type === "password";
     inputEl.type = isPassword ? "text" : "password";
-    btnEl.innerText = isPassword ? "🙈" : "👁";
-   
-});
-    </script>
+    toggleBtn.innerHTML = isPassword
+      ? `<i class="fa-solid fa-eye-slash"></i>`
+      : `<i class="fa-solid fa-eye"></i>`;
+  });
+
+  // Login animation
+  loginBtn.addEventListener("click", () => {
+    loginBtn.innerText = "Logging in...";
+    loginBtn.classList.add("from-gray-400", "to-gray-500");
+    loginBtn.classList.remove("from-blue-500", "to-purple-600");
+
+    setTimeout(() => {
+      loginBtn.innerText = "Login Successful ✅";
+      loginBtn.classList.remove("from-gray-400", "to-gray-500");
+      loginBtn.classList.add("from-green-500", "to-emerald-600");
+    }, 1500);
+
+    setTimeout(() => {
+      loginBtn.innerText = "Login";
+      loginBtn.classList.remove("from-green-500", "to-emerald-600");
+      loginBtn.classList.add("from-blue-500", "to-purple-600");
+    }, 3500);
+  });
+</script>
+
 </body>
 
 </html>
