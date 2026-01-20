@@ -82,7 +82,7 @@
 
                 <a href="/tasks/index.html" class=" hover:text-purple-600 p-2 rounded">Task</a>
                 
-              i
+              
 
             </div>
         </nav>
@@ -101,13 +101,15 @@
                     <div class="relative mt-30 z-20">
 
                         <textarea id="textBox" rows="10" value="gokul" cols="50"
-                            class="bg-gray-300 z-20  focus:outline-none placeholder:text-xl text-white text-justify px-5 bg-[url(/bg-1.jpg)] bg-contain  focus:border-none focus:outline-2  focus:rounded-lg border-2 border-gray-500 rounded-lg  shadow-xl shadow-gray-400"
+                            class="bg-gray-300 z-20  focus:outline-none placeholder:text-xl text-white text-justify py-1 px-5 bg-[url(/bg-1.jpg)] bg-contain  focus:border-none focus:outline-2  focus:rounded-lg border-2 border-gray-500 rounded-lg  shadow-xl shadow-gray-400"
                             placeholder="enter your magical words" name="" id=""></textarea>
                         <div class="absolute top-1 right-0">
                             <span onclick="copyText()"
                                 class="bg-gray-500 py-1 px-2 text-white rounded-b rounded-r cursor-copy select-none">copy</span>
                         </div>
+                        <h1 class="text-white" id="count">0/200 Message Limit</h1>
                     </div>
+
                     <div class="flex justify-center space-x-2 z-50 mt-10">
                         <button data-action="generateText"
                             class="bg-orange-400 px-2 py-1 rounded-md hover:bg-orange-500 shadow-md shadow-orange-400 hover:-translate-y-2 transition-all duration-300 ease-in-out delay-100 cursor-pointer">Text
@@ -206,6 +208,7 @@
             }
             else if (btnel.dataset.action === "clearText") {
                 clearText();
+                textLimiter();
             }
         });
     });
@@ -245,6 +248,42 @@
         textBoxEl.value = "";
         alertPopup("All text cleared", "clear");
     }
+
+    // text Limiter
+
+   
+    const count = document.getElementById('count');
+    const maxLength = 200;
+
+ 
+    textBoxEl.addEventListener("input", () => {
+    textLimiter();
+});
+
+//  function for Text Limiter
+      
+     function textLimiter(){
+         let length = textBoxEl.value.length;
+
+    
+     if (length > maxLength) {
+        textBoxEl.value = textBoxEl.value.slice(0, maxLength);
+        length = maxLength;
+        alertPopup("Textbox is full !", "error", true);
+    }
+
+    count.textContent = `${length} / ${maxLength} characters`;
+
+    
+    if (length === maxLength) {
+         count.classList.remove("text-white");
+        count.classList.add("text-red-500");
+    } else {
+        count.classList.remove("text-red-500");
+         count.classList.add("text-white");
+    }
+     }
+    
 </script>
 
 </body>

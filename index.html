@@ -1,102 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="transition-all duration-700">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task-Manager</title>
+
     <!-- Favicon  -->
     <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
-    <!-- Tailwind css Script -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap" rel="stylesheet">
 
-    <!-- Fontawsome Icon Link -->
+    <!-- Fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {},
+            },
+        };
+    </script>
 
     <style>
         * {
             font-family: "Figtree", sans-serif;
-            font-optical-sizing: auto;
             font-weight: 900;
-            font-style: normal;
         }
     </style>
 </head>
 
-<body class="">
-    <header>
+<body class="transition-colors duration-700 dark:bg-gray-900">
 
-        <nav
-            class="bg-linear-to-r  from-purple-500 from-70% to-30  to-white  text-white flex justify-between items-center shadow-2xl shadow-gray-700 hover:animate-pulse">
-            <div class="px-4  ">
-                <h1
-                    class="text-2xl  text-white  font-bold  ">
-                    Gokul
-                </h1>
+    <!-- NAVBAR -->
+    <nav class="bg-[linear-gradient(90deg,#a855f7_0%,#ffffff_70%)] 
+               dark:bg-[linear-gradient(90deg,#0f172a_0%,#581c87_70%)]
+               text-white flex justify-between items-center shadow-2xl shadow-gray-700 px-4 py-2">
+
+        <h1 class="text-2xl font-bold">Gokul</h1>
+
+        <div class="flex items-center gap-4 text-purple-900 dark:text-purple-300">
+
+            <a href="#" class="hover:text-purple-600">About</a>
+            <a href="./tasks/index.html" class="hover:text-purple-600">Task</a>
+
+            <a href="https://github.com/Gokulproject5" target="_blank" class="text-lg hover:text-purple-600">
+                <i class="fa-brands fa-github"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/gokulakrishnan-a-g8608/" target="_blank"
+                class="text-lg hover:text-purple-600">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+
+            <!-- DARK MODE TOGGLE -->
+            <button id="themeToggle"
+                class="ml-4 p-2 rounded-full bg-white/30 hover:bg-white/50 transition-all duration-500">
+                <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <main class="bg-[linear-gradient(90deg,#ffffff_0%,#a855f7_70%)] 
+               dark:bg-[linear-gradient(90deg,#0f172a_0%,#581c87_70%)]
+               transition-all duration-700 h-screen">
+
+        <div class="flex items-center justify-evenly py-20">
+
+            <!-- IMAGE -->
+            <div class="rounded-full p-10 bg-gray-400 dark:bg-gray-700 shadow-xl">
+                <img src="./assets/hero.png" class="w-64" alt="">
             </div>
-            <div class="text-sm p-4 space-x-3 text-purple-900 ">
-                <a href="" tabindex="0" class="hover:text-purple-600 p-2 rounded">About</a>
-                <a href="./tasks/index.html" tabindex="1" class="hover:text-purple-600 p-2 rounded">Task</a>
-                <a href="https://github.com/Gokulproject5" tabindex="2" target="_blank"
-                    class="hover:text-purple-600 text-lg p-2 rounded"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/gokulakrishnan-a-g8608/" tabindex="3" target="_blank"
-                    class="hover:text-purple-600 text-lg p-2 rounded"><i class="fa-brands fa-square-linkedin"></i></a>
-            </div>
-        </nav>
 
-
-    </header>
-
-    <main class="bg-linear-to-r  from-white to-purple-500 h-screen">
-
-
-        <div class="flex items-center justify-evenly py-10 ">
-
-            <div class="w-110  rounded-full ">
-                <div class="w-fit  rounded-full p-10 bg-gray-400 ">
-                    <img src="./assets/hero.png" class="w-full  " alt="">
-                </div>
-            </div>
-
-            <div class="space-y-5 ">
+            <!-- TEXT -->
+            <div class="space-y-6">
                 <div class="flex flex-col text-6xl">
-                    <span class="text-white">Hello </span>
-                    <h1 class=" text-gray-500" >I am Gokulakrishnan </h1>
-                    <p class="text-sm bg-purple-500 text-white px-2 py-1 rounded-sm">
+                    <span class="text-white dark:text-purple-400">Hello</span>
+                    <h1 class="text-gray-500 dark:text-gray-300">I am Gokulakrishnan</h1>
+                    <p class="text-sm bg-purple-500 text-white px-3 py-1 rounded w-fit">
                         Its My Task Manager
                     </p>
-
-
                 </div>
-                <div>
-                    <p>
-                        CyberDude Live Internship @2025 : <span class="text-white hover:text-purple-600 underline text-sm font-normal"><a target="_blank" href="https://youtube.com/playlist?list=PL73Obo20O_7gArAiNpissbiqQpd5aUl53&si=GYILh-nHm0ySYURP">Click Here !</a></span>
-                    </p>
-                </div>
+
+                <p class="text-gray-800 dark:text-gray-300">
+                    CyberDude Live Internship @2025 :
+                    <a target="_blank" href="https://youtube.com/playlist?list=PL73Obo20O_7gArAiNpissbiqQpd5aUl53"
+                        class="text-purple-700 dark:text-purple-400 underline">
+                        Click Here !
+                    </a>
+                </p>
+
                 <div class="flex gap-5">
-                    <button
-                    class="bg-gradient-to-r from-purple-400  to-purple-50 w-fit h-fit px-2 py-1  hover:from-purple-400  hover:to-purple-500 rounded  ">
-                    <a href="./tasks/index.html" class="text-sm   ">Task</a>
-                </button>
+                    <a href="./tasks/index.html"
+                        class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded transition-all">
+                        Task
+                    </a>
 
-                <button
-                    class="bg-gradient-to-r from-purple-400  to-purple-50 w-fit h-fit px-2 py-1  hover:from-purple-400  hover:to-purple-500 rounded  ">
-                    <a href="mailto:agokul110@gmail.com" class="text-sm   ">Contact Me</a>
-                </button>
+                    <a href="mailto:agokul110@gmail.com"
+                        class="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded transition-all">
+                        Contact Me
+                    </a>
                 </div>
-                
-
             </div>
+
         </div>
     </main>
 
+
+    <script>
+        const toggleBtn = document.getElementById("themeToggle");
+        const icon = document.getElementById("themeIcon");
+        const html = document.documentElement;
+
+        // LOcal storage 
+        if (localStorage.getItem("theme") === "dark") {
+            html.classList.add("dark");
+            icon.classList.replace("fa-moon", "fa-sun");
+        }
+
+        toggleBtn.addEventListener("click", () => {
+            html.classList.toggle("dark");
+
+            icon.classList.add("rotate-180", "transition-all", "duration-500");
+
+            if (html.classList.contains("dark")) {
+                icon.classList.replace("fa-moon", "fa-sun");
+                localStorage.setItem("theme", "dark");
+            } else {
+                icon.classList.replace("fa-sun", "fa-moon");
+                localStorage.setItem("theme", "light");
+            }
+
+            setTimeout(() => {
+                icon.classList.remove("rotate-180");
+            }, 500);
+        });
+    </script>
 
 </body>
 
