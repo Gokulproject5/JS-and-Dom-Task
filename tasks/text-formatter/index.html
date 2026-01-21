@@ -199,6 +199,7 @@
 
             if (btnel.dataset.action === "generateText") {
                 generateText();
+                textLimiter();
             }
             else if (btnel.dataset.action === "upperCase") {
                 upperCase();
@@ -264,7 +265,7 @@
       
      function textLimiter(){
          let length = textBoxEl.value.length;
-
+        
     
      if (length > maxLength) {
         textBoxEl.value = textBoxEl.value.slice(0, maxLength);
