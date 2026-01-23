@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUOTE</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Fontawsome Icon Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <header class="bg-gradient-to-r from-slate-900 to-blue-900 text-white shadow-lg fixed top-0">
+        <div class="w-screen flex text-xl  text-white text-center font-sans p-3 shadow-md font-semibold shadow-gray-400"
+            id="heading">
+            <div class="text-center flex items-center">
+                <li class=" font-medium flex px-1 "><a href="/tasks/index.html"><i class="fa-solid fa-arrow-left"
+                            style="color: #ffff;"></i>
+                    </a>
+                </li>
+            </div>
+
+            <div class="w-screen  text-xl tracking-wide rounded text-white text-center font-sans p-3  font-semibold ">
+                <h1><i class="fa-"></i> Random Quote</h1>
+
+
+            </div>
+
+
+        </div>
+
+
+        </div>
+
+    </header>
+    <main class="flex py-30 justify-center">
+        <section>
+            <div class="bg-gray-300 px-10 py-5 w-100 space-y-5 rounded">
+                <div class="flex justify-center">
+                    <button onclick="randomQuote()" class="bg-black/10 py-1 px-2 border border-black/30 rounded-sm">Random Quote</button>
+                </div>
+                <div>
+                    <blockquote id="quoteEl" class="bg-white flex flex-col justify-center  rounded">
+
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const randomQuoteDivEL = document.getElementById("quoteEl");
+
+        const quotes = [
+  { 
+    text: "The future belongs to those who believe in the beauty of their dreams.", 
+    author: "Eleanor Roosevelt" 
+  },
+  { 
+    text: "You don't have to be great to start, but you have to start to be great.", 
+    author: "Zig Ziglar" 
+  },
+  { 
+    text: "The only way to do great work is to love what you do.", 
+    author: "Steve Jobs" 
+  },
+  { 
+    text: "Arise, awake, and stop not till the goal is reached.", 
+    author: "Swami Vivekananda" 
+  },
+  { 
+    text: "Success is the sum of small efforts, repeated day in and day out.", 
+    author: "Robert Collier" 
+  },
+  { 
+    text: "It always seems impossible until it's done.", 
+    author: "Nelson Mandela" 
+  },
+  { 
+    text: "Believe you can and you're halfway there.", 
+    author: "Theodore Roosevelt" 
+  },
+  { 
+    text: "The best way to predict the future is to create it.", 
+    author: "Abraham Lincoln" 
+  },
+  { 
+    text: "Life is 10% what happens to us and 90% how we react to it.", 
+    author: "Charles R. Swindoll" 
+  },
+  { 
+    text: "Victory or defeat is not important, but the fight itself is everything.", 
+    author: "Subhash Chandra Bose" 
+  }
+];
+
+   
+  function randomQuote (){
+    randomQuoteDivEL.innerHTML="";
+
+      let random = Math.floor(Math.random()*quotes.length);
+      let Quote = quotes[random];
+       const {text,author} = Quote;
+      let textel = document.createElement("p");
+       textel.className = "text-blue-500 font-semibold  text-pretty mt-5 mx-5";
+       textel.innerText =`${text}`
+       let span = document.createElement("footer");
+       span.className = "text-sm text-gray-500 font-medium flex justify-end mb-5 mx-5"
+        span.innerText = `- ${author}`
+
+        randomQuoteDivEL.append(textel,span);
+   }
+
+    </script>
+</body>
+
+</html>

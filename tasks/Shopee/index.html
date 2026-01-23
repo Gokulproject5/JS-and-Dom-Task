@@ -101,7 +101,7 @@
     }
 
     // Event For Search
-    btnEl.addEventListener("click", () => handleSearch(inputEl.value));
+    btnEl.addEventListener("click", (e) => handleSearch(inputEl.value));
 
     // Initial render
     renderList(products);

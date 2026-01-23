@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMING HUB</title>
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+      <!-- Fontawsome Icon Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+
+</head>
+<body>
+       <header class="bg-gradient-to-r from-slate-900 to-blue-900 text-white shadow-lg fixed top-0">
+        <div class="w-screen flex text-xl  text-white text-center font-sans p-3 shadow-md font-semibold shadow-gray-400"
+            id="heading">
+             <div class="text-center flex items-center">
+                 <li class=" font-medium flex px-1 "><a href="/tasks/index.html"><i class="fa-solid fa-arrow-left"
+                            style="color: #ffff;"></i>
+                    </a>
+                </li>
+             </div>
+           
+            <div class="w-screen  text-xl tracking-wide rounded text-white text-center font-sans p-3  font-semibold ">
+            <h1><i class="fa-solid fa-gamepad"></i> Game Hub</h1>
+            
+
+            </div>
+      
+       
+          <div class="relative px-5 flex items-center">
+    <h1 class="text-white text-2xl">
+        <i class="fa-solid fa-cart-arrow-down"></i>
+    </h1>
+
+    <!-- Badge -->
+    <div  class="absolute top-1 right-3 bg-red-500 text-white rounded-full w-5 h-5 
+                flex items-center justify-center text-xs font-bold shadow" id="cartCount">
+        0
+    </div>
+</div>
+
+         
+        </div>
+       
+    </header>
+
+    <main>
+         <section class="flex justify-center my-auto  py-30">
+                 <div class="flex flex-col item-center  justify-center mx-auto space-y-5 ">
+                     <div class="flex justify-center">
+                           <input type="text" class="bg-gray-100 outline-none border-2 border-gray-500 rounded-md px-2 py-1" name="" id="inputEl" placeholder="Search your favourite game ...">
+                      </div>
+                           <div>
+                             <ul id="ulEl" class="flex justify-center w-100 flex-wrap gap-2 items-center"></ul>
+                                
+                          
+                     </div>
+                 </div>
+         </section>
+    </main>
+
+    <script>
+        //   Get Element 
+
+         const inputEl = document.getElementById("inputEl");
+         const ulEl  = document.querySelector("#ulEl");
+
+           const listArr = ["GTA 5","RDR 2","NFS","EURO Truck ","PUBG","FREE FIRE ","VICE CITY","SPIDER MAN 2 ","GOD OF WAR  ","ROBLOX"];
+
+     function renderList(data) {
+      ulEl.innerHTML = "";
+   
+      const fragment = document.createDocumentFragment();
+
+      if (!data.length) {
+        const li = document.createElement("li");
+        li.textContent = "No results found ❌";
+        li.className =
+          "bg-gray-300 text-black font-medium px-6 py-3 rounded w-100";
+        fragment.appendChild(li);
+      } else {
+        data.forEach(product => {
+          const li = document.createElement("li");
+          li.textContent = product;
+          li.className =
+            "bg-gray-300 text-black font-medium p-5 rounded w-[150px] text-center";
+          fragment.appendChild(li);
+        });
+      }
+
+        // Append fragment
+      ulEl.appendChild(fragment);
+      
+    }
+
+
+
+    // Search logic
+    function handleSearch(value) {
+        console.log(value);
+        
+      const keyword = value.trim().toLowerCase();
+      console.log(keyword);
+      
+      const filtered = keyword
+        ? listArr.filter(product => product.toLowerCase().includes(keyword))
+        : listArr;
+
+        
+      renderList(filtered);
+    }
+
+    // Event For Search
+    inputEl.addEventListener("input", (e) => handleSearch(e.target.value));
+
+    // Initial render
+    renderList(listArr);
+
+    </script>
+
+    
+</body>
+</html>
