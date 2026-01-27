@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile - Finder</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    crossorigin="anonymous"
+  />
+
+  <style>
+    * {
+      font-family: "Figtree", sans-serif;
+      font-weight: 600;
+    }
+
+    #loadingIndicator {
+      color: white;
+      margin-top: 8px;
+      display: none;
+      text-align: center;
+    }
+
+    #loadingIndicator.show {
+      display: block;
+    }
+
+    .alert-box {
+      position: fixed;
+      right: 0;
+      top: 70px;
+      padding: 10px;
+      margin: 10px;
+      background-color: white;
+      color: black;
+      border-radius: 10px;
+      animation: slideIn 0.5s ease;
+      text-align: center;
+      z-index: 50;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-900 text-black">
+
+  <!-- HEADER -->
+  <header>
+    <nav class="flex justify-between items-center py-5 px-10 text-white">
+      <a href="/tasks/index.html">
+        <i class="fa-solid fa-arrow-left hover:text-blue-500"></i>
+      </a>
+      <h1 class="text-2xl font-bold">Profile Finder</h1>
+      <a
+        href="https://github.com/Gokulproject5"
+        target="_blank"
+        class="hover:text-blue-600"
+      >
+        <i class="fa-brands fa-github text-xl"></i>
+      </a>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="flex justify-center mt-10">
+    <div id="alertContainer"></div>
+
+    <div class="w-[380px]">
+      <!-- SEARCH BAR -->
+      <div class="flex border bg-white rounded-md overflow-hidden">
+        <input
+          id="input-search"
+          type="text"
+          placeholder="Search GitHub username..."
+          class="w-full px-4 py-2 outline-none"
+        />
+        <button
+          id="search-btn"
+          class="bg-blue-500 px-4 text-white"
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
+      <!-- LOADING -->
+      <div id="loadingIndicator">Loading...</div>
+
+      <!-- RESULT -->
+      <ul id="showResult" class="mt-6"></ul>
+    </div>
+  </main>
+
+  <!-- SCRIPT -->
+  <script>
+    const inputEl = document.getElementById("input-search");
+    const searchBtn = document.getElementById("search-btn");
+    const showResult = document.getElementById("showResult");
+    const alertContainer = document.getElementById("alertContainer");
+    const loadingIndicator = document.getElementById("loadingIndicator");
+
+    // LOADING 
+    function setLoading(isLoading) {
+      loadingIndicator.classList.toggle("show", isLoading);
+    }
+
+    // ALERT 
+    function alertPopup(message) {
+      const alert = document.createElement("div");
+      alert.className = "alert-box";
+      alert.innerHTML = `
+        <i class="fa-solid fa-circle-info text-yellow-500"></i>
+        <span class="ml-2">${message}</span>
+      `;
+      alertContainer.append(alert);
+      setTimeout(() => alert.remove(), 3000);
+    }
+
+    //  DEBOUNCE 
+    function debounce(fn, delay) {
+      let timeout;
+      return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn.apply(this, args), delay);
+      };
+    }
+
+    //  FETCH USER 
+    async function getGithubUser(username) {
+      try {
+        showResult.innerHTML = "";
+        setLoading(true);
+
+        const res = await fetch(`https://api.github.com/users/${username}`);
+
+        if (res.status === 403) {
+          alertPopup("GitHub API limit exceeded");
+          return;
+        }
+
+        if (!res.ok) {
+          displayError(username);
+          return;
+        }
+
+        const data = await res.json();
+        displayProfile(data);
+      } catch (error) {
+        console.error(error);
+        alertPopup("Something went wrong");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    //  INPUT HANDLING
+    function handleSearch() {
+      const username = inputEl.value.trim();
+      if (!username) {
+        alertPopup("Please enter a username");
+        return;
+      }
+      getGithubUser(username);
+    }
+
+    const debouncedSearch = debounce((value) => {
+      if (value) getGithubUser(value);
+    }, 800);
+
+    inputEl.addEventListener("input", () => {
+      debouncedSearch(inputEl.value.trim());
+    });
+
+    inputEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") handleSearch();
+    });
+
+    searchBtn.addEventListener("click", handleSearch);
+
+    // DISPLAY PROFILE 
+    function displayProfile(user) {
+      const { avatar_url, name, login, bio, followers, following } = user;
+
+      showResult.innerHTML = `
+        <li class="bg-white rounded-xl p-4 shadow-md">
+          <div class="flex items-center gap-4">
+            <img src="${avatar_url}" class="w-16 rounded-full" />
+            <div>
+              <p class="font-bold text-lg">${name || login}</p>
+              <p class="text-sm text-blue-500">${bio || "No bio available"}</p>
+            </div>
+          </div>
+
+          <div class="flex justify-between text-sm mt-4">
+            <p><i class="fa-solid fa-user"></i> ${followers} Followers</p>
+            <p><i class="fa-solid fa-user"></i> ${following} Following</p>
+          </div>
+
+          <a
+            href="https://github.com/${login}"
+            target="_blank"
+            class="mt-4 block text-center bg-yellow-400 py-2 rounded-full"
+          >
+            View Profile <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </li>
+      `;
+    }
+
+    // ERROR
+    function displayError(name) {
+      alertPopup("User not found");
+      showResult.innerHTML = `
+        <p class="bg-white text-red-600 p-3 rounded-md text-center">
+          User not found:
+          <span class="underline text-black">${name}</span>
+        </p>
+      `;
+    }
+  </script>
+</body>
+</html>
