@@ -23,8 +23,9 @@
 
        
         .btn:active {
-            transform: scale(0.98);
-            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+            transform: scale(0.95);
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+           
         }
 
        
@@ -105,21 +106,21 @@
     <script>
         const display = document.getElementById('display');
         const historyTape = document.getElementById('history-tape');
-        
+        // temp Storage
         let currentValue = '0';
         let calculationString = '';
 
-    
+        // format the number
         function formatNumber(num) {
             if(!num) return '0';
             
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
-
+        // Update The display
         function updateDisplay() {
             display.value = currentValue;
-        }
-
+        } 
+        // History 
         function addToHistory(expression, result) {
             const div = document.createElement('div');
             div.innerText = `${expression} = ${result}`;
@@ -128,11 +129,11 @@
            
         }
 
-
+         // Clear History
          function clearHistory(){
                historyTape.innerText ="";
         }
-
+         // Checking the Number
         function appendValue(val) {
             if (currentValue === '0' && val !== '.') {
                 currentValue = '';
@@ -142,7 +143,7 @@
                 currentValue = '';
                 calculationString = '';
             }
-
+            // Function for Visual Changes
             let visualVal = val;
             if(val === '*') visualVal = ' × ';
             if(val === '/') visualVal = ' ÷ ';
@@ -154,7 +155,7 @@
             calculationString += val;
             updateDisplay();
         }
-
+         //Convert TRigonamotory 
         function appendFunction(func) {
             if (currentValue === '0' || currentValue === 'Error') {
                 currentValue = '';
@@ -165,13 +166,13 @@
             calculationString += func;
             updateDisplay();
         }
-
+        // Clear Function   
         function clearDisplay() {
             currentValue = '0';
             calculationString = '';
             updateDisplay();
         }
-
+          // Caluculating Function
         function calculate() {
             try {
                 if(!calculationString) return;
@@ -193,7 +194,7 @@
             }
         }
 
-       
+         //Keyboard Mapping  
         document.addEventListener('keydown', (event) => {
             const key = event.key;
             if (!isNaN(key) || key === '.') appendValue(key);
