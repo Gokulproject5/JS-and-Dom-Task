@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote</title>
+    <title>Web Designer Quote</title>
 
     <!-- Favicon -->
   <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon" />
@@ -262,8 +262,8 @@ option {
 <body >
 
     <!-- header -->
-       <header class="sticky top-0 z-50 " >
-              <nav class="border-b-2 border-gray-300  bg-white text-primary  flex justify-between items-center py-5 px-10">
+       <header id="navbar" class="sticky top-0 z-50 " >
+              <nav class="bg-white text-primary  flex justify-between items-center py-5 px-5">
                   <div class="flex items-center">
                     <div class="w-10 h-10 "> <img src="/assets/favicon.png" class="w-full" alt="logo"></div>
                      <h1 class="text-xl">Gokul</h1>
@@ -283,42 +283,52 @@ option {
        </header>  
        
         <!-- MAIN PAGE  -->
-      <main class="fade-up ">
+    
+       <main class="fade-up">
+  <div class="px-2 bg-white">
+    <div class="mt-3 overflow-hidden bg-[url(/bg-hh.jpg)] bg-cover bg-center z-10 rounded-3xl min-h-[400px] md:min-h-[570px] grid">
+      
+      <div class="rounded-3xl bg-linear-to-r from-black/70 to-black/50 backdrop-brightness-150 backdrop-blur grid place-items-center px-6 py-12 md:py-16">
         
-         <div class="px-2 bg-white ">
-           <!-- LAnding page  -->
-          <div class="bg-[url(/bg-hh.jpg)]  mt-3 overflow-y-auto bg-cover bg-center  z-10  rounded-3xl">
-             <!-- main page Wrapper -->
-               <div class="px-20 rounded-xl  bg-linear-to-r from-black/70 backdrop-brightness-150 backdrop-blur to-black/50  min-w-full min-h-full ">
-                   <div class="flex flex-col items-center justify-center">
-                    <div class="mx-auto my-auto space-y-5 py-40 ">
-                     <div class=" space-y-4 font-large">
-                       <h1 class="text-platinum text-6xl  px-25">Is Your Brand</h1>
-                  <h1 class="text-platinum text-6xl">Attracting Prospects?</h1>
-                     </div>
-                   <div class="flex">
-                        <p class="text-3xl text-yellow-500 mx-auto ">Let us discuss</p>
-                   </div>
-                  
-                   <div class="bg-rose-400 text-platinum py-2 px-10 text-2xl rounded-3xl mx-auto w-fit space-x-5 ">
-                       <h1 class="mx-auto flex items-center"><svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="20px" fill="#FFFFFF"><path d="M263.72-96Q234-96 213-117.15T192-168v-456q0-29.7 21.15-50.85Q234.3-696 264-696h72v-16q0-60 40.5-106T480-864q60 0 102 42t42 102v24h72q29.7 0 50.85 21.15Q768-653.7 768-624v456q0 29.7-21.16 50.85Q725.68-96 695.96-96H263.72Zm.28-72h432v-456h-72v60q0 15.3-10.29 25.65Q603.42-528 588.21-528t-25.71-10.35Q552-548.7 552-564v-60H408v60q0 15.3-10.29 25.65Q387.42-528 372.21-528t-25.71-10.35Q336-548.7 336-564v-60h-72v456Zm144-528h144v-24q0-29.7-21.21-50.85-21.21-21.15-51-21.15T429-770.85Q408-749.7 408-720v24ZM264-168v-456 456Z"/></svg> Web Based Service</h1>
-                  </div>
-                   </div>
-                  </div>
-               </div>
-             </div>
+        <div class="grid gap-4 md:gap-6 text-center max-w-5xl">
+          
+          <div class="grid gap-1">
+            <h1 class="text-platinum text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight">
+              Is Your Brand
+            </h1>
+            <h1 class="text-platinum text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight">
+              Attracting Prospects?
+            </h1>
           </div>
-      </main>
+
+          <p class="text-lg md:text-2xl text-yellow-500 font-medium">
+            Let us discuss
+          </p>
+
+          <div class="grid place-items-center">
+            <div class="flex items-center gap-3 bg-rose-400 text-platinum py-3 px-6 md:px-10 text-base md:text-xl rounded-full transition-all hover:scale-105 shadow-xl">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                <path d="M263.72-96Q234-96 213-117.15T192-168v-456q0-29.7 21.15-50.85Q234.3-696 264-696h72v-16q0-60 40.5-106T480-864q60 0 102 42t42 102v24h72q29.7 0 50.85 21.15Q768-653.7 768-624v456q0 29.7-21.16 50.85Q725.68-96 695.96-96H263.72Zm.28-72h432v-456h-72v60q0 15.3-10.29 25.65Q603.42-528 588.21-528t-25.71-10.35Q552-548.7 552-564v-60H408v60q0 15.3-10.29 25.65Q387.42-528 372.21-528t-25.71-10.35Q336-548.7 336-564v-60h-72v456Zm144-528h144v-24q0-29.7-21.21-50.85-21.21-21.15-51-21.15T429-770.85Q408-749.7 408-720v24ZM264-168v-456 456Z"/>
+              </svg>
+              <span class="font-semibold">Web Based Service</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
       
       <!-- About Section  -->
 
 <section class="min-h-screen  max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12">
 
   <!-- Sticky Card -->
-  <div class="bg-[#fa6658]  rounded-xl   md:sticky md:top-24 h-fit ">
-    <div class=" shadows rounded-xl  p-10 space-y-4">
-      <h2 class="anton-regular text-4xl md:text-7xl font-semibold fade-up">Professional</h2>
-      <h2 class="anton-regular text-4xl md:text-7xl fade-up">Website Development</h2>
+  <div class="bg-[#fa6658]  rounded-xl w-fit  md:sticky md:top-24 h-fit ">
+    <div class=" shadows rounded-xl w-fit p-10 space-y-4">
+      <h2 class="anton-regular text-4xl lg:text-xl font-semibold fade-up">Professional</h2>
+      <h2 class="anton-regular text-4xl lg:text-7xl fade-up">Website Development</h2>
       <p class="text-lg leading-relaxed text-white fade-up transition-all delay-200">
         Custom Ecommerce Portal Development, WooCommerce, Magento,
         Shopify & Marketplace Solutions.
@@ -348,7 +358,7 @@ option {
 
     
 
-    <div class="rounded-xl p-8 min-h-150  space-y-4 shadows fade-up">
+    <div class="rounded-xl p-8 lg:min-h-150  space-y-4 shadows fade-up">
        <img src="/assets/card-img.jpg" alt="">
     </div>
 
@@ -454,66 +464,78 @@ option {
 
      <!-- FOOTER -->
  
-      <section class="max-w-7xl border-b-2 mx-auto  bg-gray-300 px-20 py-10 grid grid-cols-1 md:grid-cols-2 gap-10">
-            
-            <div class="space-y-2"> 
-                 <h1 class="row-span-2 text-4xl font-semibold poppins-extrabold">Call us to talk about!</h1>
-                 <p class="text-gray-500">Business, E-Commerce, Digital Marketing, Ideas or Just a Coffee</p>
-            </div>
-            <div class="flex justify-end items-center ">
-                 <button class="hover:bg-[#FF594B] bg-[#f78075] px-4 py-2 text-white flex items-center rounded-lg "><svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="20px" fill="#FFFFFF"><path d="M263.72-96Q234-96 213-117.15T192-168v-456q0-29.7 21.15-50.85Q234.3-696 264-696h72v-16q0-60 40.5-106T480-864q60 0 102 42t42 102v24h72q29.7 0 50.85 21.15Q768-653.7 768-624v456q0 29.7-21.16 50.85Q725.68-96 695.96-96H263.72Zm.28-72h432v-456h-72v60q0 15.3-10.29 25.65Q603.42-528 588.21-528t-25.71-10.35Q552-548.7 552-564v-60H408v60q0 15.3-10.29 25.65Q387.42-528 372.21-528t-25.71-10.35Q336-548.7 336-564v-60h-72v456Zm144-528h144v-24q0-29.7-21.21-50.85-21.21-21.15-51-21.15T429-770.85Q408-749.7 408-720v24ZM264-168v-456 456Z"/></svg> Contact Us</button>       
-            </div>
-           </section>  
-           <!-- footer 2 -->
-        <section class="max-w-8xl  mx-auto px-20 py-5 grid grid-cols-1 md:grid-cols-2 gap-10 ">
-     <div class="space-y-5">
-        <div class="max-w-6xl  bg-gray-400  flex  items-center" >
-           <div class="w-10 h-10">
-             <img src="/assets/favicon.png"  alt="">
-           </div>
-            <h1 class="text-gray-50  text-xl">Gokul</h1>
-        </div> 
-        <div class="max-w-xl">
-           <p class="text-pretty text-gray-500 ">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
-        </div>
-        <div class="flex gap-2 text-gray-500 text-xl" >
-    <i class="fa-brands fa-facebook  hover:text-[#FF594B] transition-all duration-200 rotate-12 hover:-translate-y-2 "></i>
-    <i class="fa-brands fa-instagram  hover:text-[#FF594B] transition-all duration-200 rotate-10 hover:-translate-y-2 "></i>
-    <i class="fa-brands fa-linkedin  hover:text-[#FF594B] transition-all duration-200 rotate-12 hover:-translate-y-2 "></i>
-    <i class="fa-brands fa-youtube   hover:text-[#FF594B] transition-all duration-200 rotate-10 hover:-translate-y-2 "></i>
-    <i class="fa-brands fa-twitter  hover:text-[#FF594B] transition-all duration-200 rotate-12 hover:-translate-y-2"></i>
+      <section class="max-w-7xl border-b-2 mx-auto bg-gray-300 px-6 md:px-20 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+  <div class="space-y-3 text-center md:text-left">
+    <h1 class="text-3xl md:text-4xl font-bold poppins-extrabold text-gray-900">
+      Call us to talk about!
+    </h1>
+    <p class="text-gray-600 text-lg">
+      Business, E-Commerce, Digital Marketing, Ideas or Just a Coffee
+    </p>
+  </div>
+  
+  <div class="flex justify-center md:justify-end">
+    <button class="hover:bg-[#FF594B] bg-[#f78075] px-8 py-4 text-white flex items-center gap-2 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+        <path d="M263.72-96Q234-96 213-117.15T192-168v-456q0-29.7 21.15-50.85Q234.3-696 264-696h72v-16q0-60 40.5-106T480-864q60 0 102 42t42 102v24h72q29.7 0 50.85 21.15Q768-653.7 768-624v456q0 29.7-21.16 50.85Q725.68-96 695.96-96H263.72Zm.28-72h432v-456h-72v60q0 15.3-10.29 25.65Q603.42-528 588.21-528t-25.71-10.35Q552-548.7 552-564v-60H408v60q0 15.3-10.29 25.65Q387.42-528 372.21-528t-25.71-10.35Q336-548.7 336-564v-60h-72v456Zm144-528h144v-24q0-29.7-21.21-50.85-21.21-21.15-51-21.15T429-770.85Q408-749.7 408-720v24ZM264-168v-456 456Z"/>
+      </svg>
+      <span class="font-bold uppercase tracking-wider">Contact Us</span>
+    </button>
+  </div>
+</section>
+
+<footer class="max-w-7xl mx-auto px-6 md:px-20 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 border-t-2 border-gray-300">
+  <div class="space-y-6">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 overflow-hidden">
+        <img src="/assets/favicon.png" alt="Logo" class="w-full h-full object-contain">
+      </div>
+      <h1 class="text-gray-800 text-2xl font-bold tracking-tight">Gokul</h1>
+    </div>
+    
+    <div class="max-w-md">
+      <p class="text-gray-500 leading-relaxed">
+        We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.
+      </p>
+    </div>
+
+    <div class="flex gap-4 text-gray-400 text-2xl">
+      <i class="fa-brands fa-facebook hover:text-[#FF594B] transition-all duration-300 hover:-rotate-12 hover:-translate-y-2 cursor-pointer"></i>
+      <i class="fa-brands fa-instagram hover:text-[#FF594B] transition-all duration-300 hover:rotate-12 hover:-translate-y-2 cursor-pointer"></i>
+      <i class="fa-brands fa-linkedin hover:text-[#FF594B] transition-all duration-300 hover:-rotate-12 hover:-translate-y-2 cursor-pointer"></i>
+      <i class="fa-brands fa-youtube hover:text-[#FF594B] transition-all duration-300 hover:rotate-12 hover:-translate-y-2 cursor-pointer"></i>
+      <i class="fa-brands fa-twitter hover:text-[#FF594B] transition-all duration-300 hover:-rotate-12 hover:-translate-y-2 cursor-pointer"></i>
+    </div>
   </div>
 
-     </div>
-        
-        <div class="space-y-4 grid grid-cols-2 grid-flow-col ">
-           <div class="poppins-bold w-fit">
-             <h1 >Service</h1>
-             <div class="text-gray-500 ">
-                  <p>Brand Creating</p>
-                  <p>Web Development & Design</p>
-                  <p>E-commerce Development</p>
-                  <p>Intergated E-commerce Solutions</p>
-             </div> 
-             
-         </div>
-         <div class="poppins-bold w-fit">
-             <h1 >-</h1>
-             <div class="text-gray-500 ">
-                  <p>Brand Creating</p>
-                  <p>Web Development & Design</p>
-                  <p>E-commerce Development</p>
-                  <p>Intergated E-commerce Solutions</p>
-             </div> 
-        </div>
-       </div>
-                 
-<div class="max-w-l col-span-2 border-t-2 py-10 text-center border-gray-300 ">
-    <h1>Gokul Web Developer & Designer © 2026 All rights reserved</h1>
-</div>
+  <div class="grid grid-cols-2 gap-8">
+    <div class="space-y-4">
+      <h3 class="font-bold text-gray-900 uppercase text-sm tracking-widest">Services</h3>
+      <ul class="text-gray-500 space-y-2">
+        <li class="hover:text-[#FF594B] cursor-pointer transition-colors">Brand Creating</li>
+        <li class="hover:text-[#FF594B] cursor-pointer transition-colors">Web Development</li>
+        <li class="hover:text-[#FF594B] cursor-pointer transition-colors">E-commerce</li>
+        <li class="hover:text-[#FF594B] cursor-pointer transition-colors">Integrated Solutions</li>
+      </ul>
+    </div>
     
-         
-      </section>
+    <div class="space-y-4">
+      <h3 class="font-bold text-gray-900 uppercase text-sm tracking-widest">Support</h3>
+      <ul class="text-gray-500 space-y-2">
+        <li class="hover:text-[#FF594B] cursor-pointer transition-colors">Privacy Policy</li>
+        <li class="hover:text-[#FF594B] cursor-pointer transition-colors">Terms of Service</li>
+        <li class="hover:text-[#FF594B] cursor-pointer transition-colors">Documentation</li>
+        <li class="hover:text-[#FF594B] cursor-pointer transition-colors">Help Center</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="lg:col-span-2 border-t border-gray-300 pt-8 mt-8 text-center">
+    <p class="text-gray-400 text-sm">
+      &copy; 2026 Gokul Web Developer & Designer. All rights reserved.
+    </p>
+  </div>
+</footer>
 <!-- JAVASCRIPT -->
 <script>
 // quotation logic
@@ -589,7 +611,18 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
 
-
+window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      
+      nav.classList.add('border-b-2', 'border-gray-300');
+      
+    } else {
+     
+      nav.classList.remove('border-b-2', 'border-gray-300');
+      
+    }
+  });
 
 </script>
 
